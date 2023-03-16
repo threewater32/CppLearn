@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d6291f38-8267-45de-b75a-b8323970448a}</ProjectGuid>
-    <RootNamespace>机房预约</RootNamespace>
+    <ProjectGuid>{e81184e3-e58e-4003-b037-34cc7a82bd94}</ProjectGuid>
+    <RootNamespace>bookComputerLabSys</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="机房预约.cpp" />
+    <ClCompile Include="bookComputerLabSys.cpp" />
+    <ClCompile Include="manager.cpp" />
+    <ClCompile Include="student.cpp" />
+    <ClCompile Include="teacher.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bookComputerLabSys.h" />
+    <ClInclude Include="globalFile.h" />
+    <ClInclude Include="Identity.h" />
+    <ClInclude Include="manager.h" />
+    <ClInclude Include="student.h" />
+    <ClInclude Include="teacher.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="userFile\student.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

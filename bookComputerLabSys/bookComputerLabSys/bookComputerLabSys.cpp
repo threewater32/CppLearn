@@ -1,6 +1,6 @@
 ﻿// 机房预约.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 
-#include "机房预约.h"
+#include "bookComputerLabSys.h"
 
 
 using namespace std;
@@ -15,7 +15,7 @@ const int EXIT = 0;
 
 int main()
 {
-    
+
     int select = 0;
 
     while (true)
@@ -94,7 +94,7 @@ void LoginIn(string fileName, int type)
         cin >> id;
 
     }
-    else if(type ==TEACHER )
+    else if (type == TEACHER)
     {
         cout << "请输入你的职工号" << endl;
         cin >> id;
@@ -124,7 +124,7 @@ void LoginIn(string fileName, int type)
         int fId;
         string fName;
         string fPwd;
-        while (ifs>>fId&&ifs>>fName&&ifs>>fPwd)
+        while (ifs >> fId && ifs >> fName && ifs >> fPwd)
         {
             if (id == fId && name == fName && pwd == fPwd) {
                 cout << "学生验证成功" << endl;

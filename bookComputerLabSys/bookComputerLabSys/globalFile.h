@@ -2,7 +2,7 @@
 //管理员文件
 #define ADMIN_FILE     "admin.txt"
 //学生文件
-#define STUDENT_FILE   "student.txt"
+#define STUDENT_FILE   "userFile//student.txt"
 
 //教师文件
 #define TEACHER_FILE   "teacher.txt"
