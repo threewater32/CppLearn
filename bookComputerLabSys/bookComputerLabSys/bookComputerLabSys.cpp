@@ -2,7 +2,6 @@
 
 #include "bookComputerLabSys.h"
 
-
 using namespace std;
 
 // 定义常量
@@ -130,7 +129,7 @@ void LoginIn(string fileName, int type)
                 cout << "学生验证成功" << endl;
                 system("pause");
                 system("cls");
-                //person = new Student(id, name, pwd);
+                person = new Student(id, name, pwd);
                 return;
             }
         }
@@ -139,10 +138,36 @@ void LoginIn(string fileName, int type)
     else if (type == TEACHER)
     {
         //教师登录验证
+        int fId;
+        string fName;
+        string fPwd;
+        while (ifs >> fId && ifs >> fName && ifs >> fPwd)
+        {
+            if (id == fId && name == fName && pwd == fPwd) {
+                cout << "教师验证成功" << endl;
+                system("pause");
+                system("cls");
+                person = new Teacher(id, name, pwd);
+                return;
+            }
+        }
     }
     else if (type == ADMIN)
     {
         //管理员登录验证
+        
+        string fName;
+        string fPwd;
+        while (  ifs >> fName && ifs >> fPwd)
+        {
+            if (name == fName && pwd == fPwd) {
+                cout << "管理员验证成功" << endl;
+                system("pause");
+                system("cls");
+                person = new Manager(id, name, pwd);
+                return;
+            }
+        }
     }
 
     cout << "验证登录失败!" << endl;
