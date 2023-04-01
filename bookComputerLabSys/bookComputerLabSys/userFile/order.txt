@@ -1,2 +1,2 @@
-1 张三 123
-2 李四 123456
+date:2 interval:1 stuId:12 stuName:yuan roomId:3 status:2
+date:4 interval:2 stuId:12 stuName:yuan roomId:2 status:0

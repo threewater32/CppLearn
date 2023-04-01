@@ -1,5 +1,6 @@
 #include "manager.h"
 #include "bookComputerLabSys.h"
+using namespace std;
 
 Manager::Manager()
 {
@@ -47,6 +48,7 @@ void Manager::addPerson()
 	string fileName;
 	string tip;
 	ofstream ofs;
+	string errTip;
 
 	int select = 0;
 	cin >> select;
@@ -55,11 +57,13 @@ void Manager::addPerson()
 	{
 		fileName = STUDENT_FILE;
 		tip = "请输入学号： ";
+		errTip = "学号重复,请重新输入";
 	}
 	else if (select == TEACHER)
 	{
 		fileName = TEACHER_FILE;
 		tip = "请输入职工编号：";
+		errTip = "职工号重复,请重新输入";
 	}
 	else
 	{
@@ -72,8 +76,20 @@ void Manager::addPerson()
 	string name;
 	string pwd;
 	cout << tip << endl;
-	cin >> id;
+	while (true)
+	{
+		cin >> id;
+		bool ret = this->checkRepeat(id, select);
+		if (ret) {
+			cout << errTip << endl;
 
+		}
+		else
+		{
+			break;
+		}
+	}
+	
 	cout << "请输入姓名： " << endl;
 	cin >> name;
 
@@ -87,39 +103,89 @@ void Manager::addPerson()
 	system("cls");
 
 	ofs.close();
-
+	this->initVector();
+}
+void printStudent(Student& s)
+{
+	cout << "学号： " << s.m_Id << " 姓名： " << s.m_Name << " 密码：" << s.m_Pwd << endl;
+}
+void printTeacher(Teacher& t)
+{
+	cout << "职工号： " << t.m_EmId << " 姓名： " << t.m_Name << " 密码：" << t.m_Pwd << endl;
 }
 
 void Manager::showPerson()
 {
+	cout << "请选择查看内容：" << endl;
+	cout << "1、查看所有学生" << endl;
+	cout << "2、查看所有老师" << endl;
 
+	int select = 0;
+
+	cin >> select;
+
+	if (select == 1)
+	{
+		cout << "所有学生信息如下： " << endl;
+		for_each(vStu.begin(), vStu.end(), printStudent);
+	}
+	else
+	{
+		cout << "所有老师信息如下： " << endl;
+		for_each(vTea.begin(), vTea.end(), printTeacher);
+	}
+	system("pause");
+	system("cls");
 }
 
 void Manager::showComputer()
 {
-
+	cout << "机房信息如下： " << endl;
+	for (vector<ComputerRoom>::iterator it = vCom.begin(); it != vCom.end(); it++)
+	{
+		cout << "机房编号： " << it->m_ComId << " 机房最大容量： " << it->m_MaxNum << endl;
+	}
+	system("pause");
+	system("cls");
 }
+
+
 
 void Manager::cleanFile()
 {
+	ofstream ofs(ORDER_FILE, ios::trunc);
+	ofs.close();
 
+	cout << "清空成功！" << endl;
+	system("pause");
+	system("cls");
 }
-
+//把文件中的信息加载到vector容器
 void Manager::initVector()
 {
 	vStu.clear();
 	vTea.clear();
+	vCom.clear();
+
+	//获取机房信息
+	ifstream ifs;
+
+	ifs.open(COMPUTER_FILE, ios::in);
+	ComputerRoom c;
+	while (ifs >> c.m_ComId && ifs >> c.m_MaxNum)
+	{
+		vCom.push_back(c);
+	}
+	cout << "当前机房数量为： " << vCom.size() << endl;
+	ifs.close();
 
 	//读取学生文件中信息
-	ifstream ifs;
 	ifs.open(STUDENT_FILE, ios::in);
 	if (!ifs.is_open())
 	{
 		cout << "文件读取失败" << endl;
 		return;
 	}
-
-
 	Student s;
 	while (ifs>>s.m_Id&&ifs>>s.m_Name&&ifs>>s.m_Pwd)
 	{
@@ -130,7 +196,6 @@ void Manager::initVector()
 	ifs.close();
 	
 	//读取老师文件中信息
-	
 	ifs.open(TEACHER_FILE, ios::in);
 	if (!ifs.is_open())
 	{
@@ -145,10 +210,33 @@ void Manager::initVector()
 		vTea.push_back(t);
 
 	}
-	cout << "当前老师数量为： " << vStu.size() << endl;
+	cout << "当前老师数量为： " << vTea.size() << endl;
 	ifs.close();
 
 
 
+}
+//从vector容器中遍历寻找重复id
+bool Manager::checkRepeat(int id, int type)
+{
+	if (type == STUDENT) {
+		for (vector<Student>::iterator it = vStu.begin(); it != vStu.end(); it++) {
+			if (id == it->m_Id) {
+				return true;
+			}
+		}
+	}
+	else if (type == TEACHER)
+	{
+		for (vector<Teacher>::iterator it = vTea.begin(); it != vTea.end(); it++)
+		{
+			if (id == it->m_EmId)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 

@@ -11,9 +11,14 @@
 void show_Menu();
 void get_Select(int& select);
 void LoginIn(string fileName, int type);
+void managerMenu(Identity*& manager);
 
 
-
+// 定义常量
+const int STUDENT = 1;
+const int TEACHER = 2;
+const int ADMIN = 3;
+const int EXIT = 0;
 
 
 

@@ -128,15 +128,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bookComputerLabSys.cpp" />
+    <ClCompile Include="computerRoom.cpp" />
     <ClCompile Include="manager.cpp" />
+    <ClCompile Include="orderFile.cpp" />
     <ClCompile Include="student.cpp" />
     <ClCompile Include="teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bookComputerLabSys.h" />
+    <ClInclude Include="computerRoom.h" />
     <ClInclude Include="globalFile.h" />
     <ClInclude Include="Identity.h" />
     <ClInclude Include="manager.h" />
+    <ClInclude Include="orderFile.h" />
     <ClInclude Include="student.h" />
     <ClInclude Include="teacher.h" />
   </ItemGroup>

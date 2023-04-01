@@ -27,6 +27,12 @@
     <ClCompile Include="teacher.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="computerRoom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="orderFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bookComputerLabSys.h">
@@ -45,6 +51,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="teacher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="computerRoom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="orderFile.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

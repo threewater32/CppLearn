@@ -4,6 +4,7 @@
 
 using namespace std;
 
+void TeacherMenu(Identity*& teacher);
 class Teacher :public Identity
 {
 public:
@@ -14,6 +15,8 @@ public:
 	void validOrder();
 	
 	int m_EmId;
+	
+	
 private:
 
 };

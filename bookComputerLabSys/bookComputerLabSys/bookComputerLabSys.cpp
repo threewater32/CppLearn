@@ -1,20 +1,11 @@
 ﻿// 机房预约.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-
 #include "bookComputerLabSys.h"
 
 using namespace std;
 
-// 定义常量
-const int STUDENT = 1;
-const int TEACHER = 2;
-const int ADMIN = 3;
-const int EXIT = 0;
-
-
-
 int main()
 {
-
+    
     int select = 0;
 
     while (true)
@@ -102,8 +93,7 @@ void LoginIn(string fileName, int type)
     else if (type == ADMIN)
     {
         cout << "请输入你的管理员账号" << endl;
-        cin >> id;
-
+        
     }
     else
     {
@@ -130,6 +120,7 @@ void LoginIn(string fileName, int type)
                 system("pause");
                 system("cls");
                 person = new Student(id, name, pwd);
+                studentMenu(person);
                 return;
             }
         }
@@ -148,6 +139,7 @@ void LoginIn(string fileName, int type)
                 system("pause");
                 system("cls");
                 person = new Teacher(id, name, pwd);
+                TeacherMenu(person);
                 return;
             }
         }
@@ -165,6 +157,7 @@ void LoginIn(string fileName, int type)
                 system("pause");
                 system("cls");
                 person = new Manager(id, name, pwd);
+                managerMenu(person);
                 return;
             }
         }
@@ -176,4 +169,48 @@ void LoginIn(string fileName, int type)
     system("cls");
     return;
 }
+
+void managerMenu(Identity*& manager)
+{
+    while (true)
+    {
+        manager->operMenu();
+        Manager* man = (Manager*)manager;
+        int select = 0;
+
+        cin >> select;
+
+        if (select == 1)  //添加账号
+        {
+            cout << "添加账号" << endl;
+            man->addPerson();
+        }
+        else if (select == 2) //查看账号
+        {
+            cout << "查看账号" << endl;
+            man->showPerson();
+        }
+        else if (select == 3) //查看机房
+        {
+            cout << "查看机房" << endl;
+            man->showComputer();
+        }
+        else if (select == 4) //清空预约
+        {
+            cout << "清空预约" << endl;
+            man->cleanFile();
+        }
+        else
+        {
+            delete manager;
+            cout << "注销成功" << endl;
+            system("pause");
+            system("cls");
+            return;
+        }
+    }
+}
+   
+
+
 
